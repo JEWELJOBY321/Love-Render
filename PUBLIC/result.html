@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Result</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="result-container">
+    <h1>🎉 Your Love Match Result! 🎉</h1>
+    <h2 id="matchMessage">Loading your result...</h2>
+    <p>May your crush notice you by the end of 2026 💖</p>
+    <button onclick="window.location.href='/'">Try Again</button>
+  </div>
+
+  <!-- Confetti library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+  <script>
+    // Run confetti effect
+    confetti({
+      particleCount: 200,
+      spread: 90,
+      origin: { y: 0.6 }
+    });
+
+    // Display personalized match percentage from localStorage
+    const result = JSON.parse(localStorage.getItem("matchResult"));
+    const messageEl = document.getElementById("matchMessage");
+
+    if (result) {
+      const msg = `${result.yourName ? result.yourName + ", " : ""}your crush ${result.crushName} has a match of ${result.match}% with you! 💖`;
+      messageEl.innerText = msg;
+    } else {
+      messageEl.innerText = "Oops! No match data found. Please try again.";
+    }
+  </script>
+</body>
+</html>
