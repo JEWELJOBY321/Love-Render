@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve static files
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "PUBLIC")));
 
 // MongoDB
 mongoose
@@ -51,10 +51,11 @@ app.get("/admin", async (req, res) => {
 
 // ROOT ROUTE (THIS FIXES NOT FOUND)
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(__dirname, "PUBLIC", "index.html"));
 });
 
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
